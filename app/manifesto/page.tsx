@@ -93,7 +93,7 @@ export default function ManifestoPage() {
               </h1>
 
               <p className="text-center text-[#605A57] text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-[700px]">
-                So, distribution. When founders hear about our premise, they ask us: "Wait, so you can handle creators, outreach, negotiation, briefs, and payouts all with AI?" …our answer: hell yes.
+                So, distribution. When founders hear about our premise, they ask us: "Wait, so you can handle creators, outreach, negotiation, briefs, and payouts all with AI?" …our answer: <strong><span className="text-[#37322F]">hell yes.</span></strong>
               </p>
             </div>
           </div>
@@ -111,13 +111,13 @@ export default function ManifestoPage() {
               </div>
             </div>
 
-            <div className="flex-1 border-l border-r border-[rgba(55,50,47,0.12)] px-6 sm:px-8 md:px-12 lg:px-20 py-16 sm:py-20 md:py-28">
+            <div className="flex-1 border-l border-r border-[rgba(55,50,47,0.12)] px-6 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-16 md:py-20">
               <div className="max-w-[1000px] mx-auto space-y-16 sm:space-y-20 md:space-y-24">
                 {/* Opening Section */}
                 <div className="space-y-8 pb-12 border-b border-[rgba(55,50,47,0.12)]">
                   <div className="space-y-6">
                     <p className="text-[#605A57] text-base sm:text-lg font-normal leading-relaxed">
-                      But, we aren't just a sourcing spreadsheet with a chatbox or another small internal tool for distribution companies. We are working on something much bigger. <strong>Let's take a step back.</strong>
+                      <strong><span className="text-[#37322F]">But</span></strong>, we aren't just a sourcing spreadsheet with a chatbox or another small internal tool for distribution companies. We are working on something much bigger. <strong><span className="text-[#37322F]">Let's take a step back.</span></strong>
                     </p>
                     
                     <div className="space-y-4">
@@ -127,8 +127,8 @@ export default function ManifestoPage() {
                       <p className="text-[#605A57] text-base sm:text-lg font-normal leading-relaxed">
                         While CPMs for distribution channels are up, trust in most of these addresses are down because of the slop videos they circulate throughout social media. The only channel still compounding?
                       </p>
-                      <p className="text-[#37322F] text-lg sm:text-xl font-normal leading-relaxed">
-                        People. Creators. The humans that have genuinely created content which we consume and resonate with on a daily basis.
+                      <p className="text-[#605A57] text-lg sm:text-xl font-normal leading-relaxed">
+                      <strong><span className="text-[#37322F]">People. Creators.</span></strong> The humans that have genuinely created content which we consume and resonate with on a daily basis.
                       </p>
                     </div>
 
@@ -173,7 +173,7 @@ export default function ManifestoPage() {
                     We're done with that. So, we turned it into code, becoming the distribution layer for all consumer products.
                   </p>
                   <p className="text-[#605A57] text-base sm:text-lg font-normal leading-relaxed italic">
-                    If you can instrument your product, you should be able to instrument your distribution. Be able to measure it, improve it, and–yeah–<strong>automate it</strong>.
+                    If you can instrument your product, you should be able to instrument your distribution. Be able to measure it, improve it, and–yeah–<strong><span className="text-[#37322F]">automate it</span></strong>.
                   </p>
                 </div>
 
@@ -220,7 +220,7 @@ export default function ManifestoPage() {
                     The market we're unlocking
                   </h3>
                   <p className="text-[#605A57] text-base sm:text-lg font-normal leading-relaxed">
-                    Creator scale isn't part of a typical tool category. It is a <strong>fundamental shift</strong> in infrastructure use. Eventually, we scale as a distribution layer as follows:
+                    Creator scale isn't part of a typical tool category. It is a <strong><span className="text-[#37322F]">fundamental shift</span></strong> in infrastructure use. Eventually, we scale as a distribution layer as follows:
                   </p>
                   
                   <div className="space-y-6">
@@ -265,7 +265,7 @@ export default function ManifestoPage() {
                       Our team combines our understanding of AI systems with data-driven marketing and automation. Kshitij deployed production-level AI agents at Amazon which actively synthesized large-scale competitor data from online sources to power product insights. Eshaan built AI-driven analytics tools at Graphene to measure and optimize digital marketing performance for startups. So, we know the space.
                     </p>
                     <p className="text-[#605A57] text-base sm:text-lg font-normal leading-relaxed">
-                      Besides domain expertise, we ship fast and are driven. Both founders study at top institutions. UC Berkeley and UPenn. We have researched at the nation's top research labs such as MIT Critical Data Laboratory, MIT Lincoln Labs, and NASA's Machine Learning Labs. As a result, we have presented research at numerous conferences such as IEEE, MIT URTC, and state conferences. Also, we have placed in the nation's top math and computing awards such as the USACO and the math olympiad.
+                      Besides domain expertise, we ship fast and are driven. Both founders study at top institutions, UC Berkeley and UPenn. We have researched at the nation's top research labs such as MIT Critical Data Laboratory, MIT Lincoln Labs, and NASA's Machine Learning Labs. As a result, we have presented research at numerous conferences such as IEEE, MIT URTC, and state conferences. Also, we have placed in the nation's top math and computing awards such as the USACO and the math olympiad.
                     </p>
                   </div>
                 </div>
