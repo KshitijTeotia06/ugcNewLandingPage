@@ -19,9 +19,9 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
-  title: "Brillance - Effortless Custom Contract Billing",
+  title: "CreatorScale - AI-powered creator distribution",
   description:
-    "Streamline your billing process with seamless automation for every custom contract, tailored by Brillance.",
+    "CreatorScale - AI-powered creator distribution",
     generator: 'v0.app'
 }
 
