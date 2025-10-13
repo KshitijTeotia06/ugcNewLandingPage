@@ -47,13 +47,18 @@ export default function ManifestoPage() {
                   CreatorScale
                 </div>
               </Link>
-              <Link href="/" className="h-6 sm:h-7 md:h-8 flex justify-start items-start gap-2 sm:gap-3">
-                <div className="px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-white shadow-[0px_1px_2px_rgba(55,50,47,0.12)] overflow-hidden rounded-full flex justify-center items-center hover:shadow-[0px_2px_4px_rgba(55,50,47,0.16)] transition-shadow">
-                  <div className="flex flex-col justify-center text-[#37322F] text-xs md:text-[13px] font-medium leading-5 font-sans">
-                    Back to Home
+              <div className="h-6 sm:h-7 md:h-8 flex justify-start items-start gap-2 sm:gap-3">
+                <Link href="/manifesto" className="px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-[#37322F] text-white shadow-[0px_1px_2px_rgba(55,50,47,0.12)] overflow-hidden rounded-full flex justify-center items-center hover:bg-[#2A2520] transition-colors">
+                  <div className="flex flex-col justify-center text-xs md:text-[13px] font-medium leading-5 font-sans">
+                    Manifesto
                   </div>
-                </div>
-              </Link>
+                </Link>
+                <Link href="/" className="px-2 sm:px-3 md:px-[14px] py-1 sm:py-[6px] bg-white shadow-[0px_1px_2px_rgba(55,50,47,0.12)] overflow-hidden rounded-full flex justify-center items-center hover:shadow-[0px_2px_4px_rgba(55,50,47,0.16)] transition-shadow">
+                  <div className="flex flex-col justify-center text-[#37322F] text-xs md:text-[13px] font-medium leading-5 font-sans">
+                    Home
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -93,7 +98,7 @@ export default function ManifestoPage() {
               </h1>
 
               <p className="text-center text-[#605A57] text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-[700px]">
-                So, distribution. When founders hear about our premise, they ask us: "Wait, so you can handle creators, outreach, negotiation, briefs, and payouts all with AI?" …our answer: <strong><span className="text-[#37322F]">hell yes.</span></strong>
+                So, distribution. When founders hear about our premise, they ask us: "Wait, so you can handle creators, outreach, negotiation, briefs, and payouts all with AI?" …our answer: <strong><span className="text-[#37322F]">f*ck yeah.</span></strong>
               </p>
             </div>
           </div>
@@ -121,11 +126,11 @@ export default function ManifestoPage() {
                     </p>
                     
                     <div className="space-y-4">
-                      <h3 className="text-[#37322F] text-xl sm:text-2xl md:text-3xl font-semibold leading-tight font-sans">
+                      <h3 className="text-[#37322F] text-xl sm:text-2xl md:text-3xl font-semibold leading-tight font-sans mt-12">
                         Customer acquisition is getting crushed.
                       </h3>
                       <p className="text-[#605A57] text-base sm:text-lg font-normal leading-relaxed">
-                        While CPMs for distribution channels are up, trust in most of these addresses are down because of the slop videos they circulate throughout social media. The only channel still compounding?
+                      Nowadays, we humans trust real people over flashy advertisements. While CPMs for distribution channels are up, trust in most of these addresses are down because of the slop videos they circulate throughout social media. The only channel still compounding?
                       </p>
                       <p className="text-[#605A57] text-lg sm:text-xl font-normal leading-relaxed">
                       <strong><span className="text-[#37322F]">People. Creators.</span></strong> The humans that have genuinely created content which we consume and resonate with on a daily basis.
@@ -148,33 +153,43 @@ export default function ManifestoPage() {
                 </div>
 
                 {/* The Problem Section */}
-                <div className="space-y-6 pb-12 border-b border-[rgba(55,50,47,0.12)]">
+                <div className="space-y-8 pb-12 border-b border-[rgba(55,50,47,0.12)]">
                   <h3 className="text-[#37322F] text-xl sm:text-2xl md:text-3xl font-semibold leading-tight font-sans">
                     And yet, the creator discovery and fulfillment process is filled with red tape:
                   </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {[
-                      "googled lists",
-                      "cold DMs", 
-                      "ad-hoc briefs",
-                      '"what\'s your rate?"',
-                      "net-45 posts",
-                      '"did they post?"',
-                      '"how is the video performing?"',
-                      "<10 leads"
-                    ].map((item, index) => (
-                      <div key={index} className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-[#37322F] rounded-full flex-shrink-0"></div>
-                        <span className="text-[#605A57] text-sm sm:text-base font-normal">{item}</span>
-                      </div>
-                    ))}
+                  
+                  <div className="bg-gradient-to-br from-[rgba(55,50,47,0.02)] to-[rgba(55,50,47,0.08)] p-8 rounded-2xl border border-[rgba(55,50,47,0.12)]">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {[
+                        "delayed timelines",
+                        "unread cold DMs", 
+                        "unclear briefs",
+                        'inflated rates',
+                        "low value content",
+                        'sloppy communication',
+                        'fragmented analytics',
+                        "<10 leads"
+                      ].map((item, index) => (
+                        <div key={index} className="flex items-center gap-4 p-4 bg-white/60 rounded-lg border border-[rgba(55,50,47,0.08)] hover:bg-white/80 hover:border-[rgba(55,50,47,0.16)] transition-all duration-200">
+                          <div className="w-2 h-2 bg-[#37322F] rounded-full flex-shrink-0"></div>
+                          <span className="text-[#605A57] text-sm sm:text-base font-medium">{item}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <p className="text-[#37322F] text-lg sm:text-xl font-semibold leading-relaxed">
-                    We're done with that. So, we turned it into code, becoming the distribution layer for all consumer products.
-                  </p>
-                  <p className="text-[#605A57] text-base sm:text-lg font-normal leading-relaxed italic">
-                    If you can instrument your product, you should be able to instrument your distribution. Be able to measure it, improve it, and–yeah–<strong><span className="text-[#37322F]">automate it</span></strong>.
-                  </p>
+
+                  <div className="space-y-4 pt-8">
+                    <div className="p-4 sm:p-6 rounded-lg text-center">
+                      <p className="text-[#37322F] text-lg sm:text-xl font-semibold leading-relaxed">
+                        Stop settling for scraps.
+                      </p>
+                    </div>
+                    <div className="bg-[rgba(55,50,47,0.04)] p-6 rounded-lg border-l-4 border-[#37322F]">
+                      <p className="text-[#605A57] text-base sm:text-lg font-normal leading-relaxed italic">
+                        If you can instrument your product, you should be able to instrument your distribution. Be able to measure it, improve it, and–yeah–<strong><span className="text-[#37322F]">automate it</span></strong>.
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 {/* What We're Building */}
@@ -245,16 +260,6 @@ export default function ManifestoPage() {
                   </div>
                 </div>
 
-                {/* The Cycle */}
-                <div className="space-y-6 pb-12 border-b border-[rgba(55,50,47,0.12)]">
-                  <h3 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight font-sans">
-                    The cycle
-                  </h3>
-                  <p className="text-[#605A57] text-base sm:text-lg font-normal leading-relaxed">
-                    Unlike other platforms, every interaction is structured. Every outcome is labeled. Every brief and asset is versioned. The swarm gets smarter and smarter with each campaign and the sourcing becomes more effective. This <strong>flywheel of data and liquidity</strong> will make us the one-stop-shop. The more brands and creators we serve, the better the matches, and the faster the closes.
-                  </p>
-                </div>
-
                 {/* Culture + Team */}
                 <div className="space-y-6 pb-12 border-b border-[rgba(55,50,47,0.12)]">
                   <h3 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight font-sans">
@@ -265,7 +270,10 @@ export default function ManifestoPage() {
                       Our team combines our understanding of AI systems with data-driven marketing and automation. Kshitij deployed production-level AI agents at Amazon which actively synthesized large-scale competitor data from online sources to power product insights. Eshaan built AI-driven analytics tools at Graphene to measure and optimize digital marketing performance for startups. So, we know the space.
                     </p>
                     <p className="text-[#605A57] text-base sm:text-lg font-normal leading-relaxed">
-                      Besides domain expertise, we ship fast and are driven. Both founders study at top institutions, UC Berkeley and UPenn. We have researched at the nation's top research labs such as MIT Critical Data Laboratory, MIT Lincoln Labs, and NASA's Machine Learning Labs. As a result, we have presented research at numerous conferences such as IEEE, MIT URTC, and state conferences. Also, we have placed in the nation's top math and computing awards such as the USACO and the math olympiad.
+                      Besides domain expertise, we ship fast and are driven. Both founders study at top institutions, UC Berkeley and UPenn. We have researched at the nation's top research labs such as MIT Critical Data Laboratory, MIT Lincoln Labs, and NASA's Machine Learning Labs. Also, we have recieved national recognition for our placement in math and computing olympiads such as the USACO and the math olympiad.
+                    </p>
+                    <p className="text-[#605A57] text-base sm:text-lg font-normal leading-relaxed">
+                    We focus on this specific problem because we want to democratize the playing field for creators. It shouldn’t be the case that your network or connections get you more UGC opportunities. Rather, it should be analyzed based on talent and performance, optimizing for both the creator and the company.
                     </p>
                   </div>
                 </div>
@@ -281,20 +289,42 @@ export default function ManifestoPage() {
                   
                   <div className="pt-8 pb-6">
                     <p className="text-[#37322F] text-lg sm:text-xl font-medium text-right">
-                      ~~ Kshitij and Eshaan from CreatorScale
+                      <span className="text-[#37322F] text-lg sm:text-xl font-medium text-right">
+                        ~~{" "}
+                        <Link
+                          href="https://www.linkedin.com/in/kshitij-teotia"
+                          className="underline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Kshitij
+                        </Link>{" "}
+                        and{" "}
+                        <Link
+                          href="https://www.linkedin.com/in/eshaankaipa/"
+                          className="underline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Eshaan
+                        </Link>{" "}
+                        from CreatorScale
+                      </span>
                     </p>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-4 pt-8">
-                    <Link
-                      href="/"
+                  {/*                   <div className="flex flex-col sm:flex-row gap-4 pt-8">
+                    <a
+                      href="https://calendly.com/kshitijteotia"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="h-11 sm:h-12 md:h-[52px] px-8 sm:px-10 md:px-12 relative bg-[#37322F] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset] overflow-hidden rounded-full flex justify-center items-center cursor-pointer hover:bg-[#2A2520] transition-colors group"
                     >
                       <div className="w-32 sm:w-36 md:w-44 h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0)] to-[rgba(0,0,0,0.10)] mix-blend-multiply"></div>
                       <div className="flex flex-col justify-center text-white text-sm sm:text-base md:text-[15px] font-medium leading-5 font-sans">
                         Book a demo
                       </div>
-                    </Link>
+                    </a>
                     <Link
                       href="/"
                       className="h-11 sm:h-12 md:h-[52px] px-8 sm:px-10 md:px-12 relative bg-white shadow-[0px_0px_0px_1px_rgba(55,50,47,0.12)] overflow-hidden rounded-full flex justify-center items-center cursor-pointer hover:shadow-[0px_0px_0px_1px_rgba(55,50,47,0.24)] transition-all"
@@ -303,7 +333,7 @@ export default function ManifestoPage() {
                         Learn more
                       </div>
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
