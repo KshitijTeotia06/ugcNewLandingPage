@@ -10,6 +10,8 @@ export default function DashboardPage() {
   const [user, setUser] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<'campaigns' | 'discover'>('campaigns')
+  const [campaigns, setCampaigns] = useState<any[]>([])
+  const [campaignsLoading, setCampaignsLoading] = useState(false)
   const supabase = createClient()
 
   useEffect(() => {
@@ -19,11 +21,31 @@ export default function DashboardPage() {
         router.push('/login')
       } else {
         setUser(user)
+        // Fetch user's campaigns
+        fetchCampaigns(user.id)
       }
       setLoading(false)
     }
     getUser()
   }, [router, supabase])
+
+  const fetchCampaigns = async (userId: string) => {
+    setCampaignsLoading(true)
+    try {
+      const { data, error } = await supabase
+        .from('campaigns')
+        .select('*')
+        .eq('owner_id', userId)
+        .order('created_at', { ascending: false })
+
+      if (error) throw error
+      setCampaigns(data || [])
+    } catch (error) {
+      console.error('Error fetching campaigns:', error)
+    } finally {
+      setCampaignsLoading(false)
+    }
+  }
 
   const handleSignOut = async () => {
     await supabase.auth.signOut()
@@ -126,8 +148,8 @@ export default function DashboardPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <StatCard
                       title="Active Campaigns"
-                      value="0"
-                      description="Running campaigns"
+                      value={campaigns.length.toString()}
+                      description="Total campaigns"
                       icon={
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -162,19 +184,33 @@ export default function DashboardPage() {
                       <h2 className="text-[#37322F] text-xl font-semibold font-sans">Campaign Management</h2>
                       <p className="text-[#605A57] text-sm mt-1">Track and manage your creative campaigns</p>
                     </div>
-                    <div className="p-8 text-center">
-                      <div className="max-w-md mx-auto space-y-4">
-                        <div className="w-16 h-16 bg-[#F7F5F3] rounded-full flex items-center justify-center mx-auto">
-                          <svg className="w-8 h-8 text-[#37322F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                          </svg>
+                    <div className="p-8">
+                      {campaignsLoading ? (
+                        <div className="text-center">
+                          <div className="text-[#605A57] text-sm">Loading campaigns...</div>
                         </div>
-                        <h3 className="text-[#37322F] text-lg font-semibold">No campaigns yet</h3>
-                        <p className="text-[#605A57] text-sm">Create your first campaign to start tracking creator performance and analyzing results.</p>
-                        <button className="mt-4 px-6 py-2.5 bg-[#37322F] text-white rounded-full text-sm font-medium shadow-[0px_1px_2px_rgba(55,50,47,0.12)] hover:bg-[#2A2520] hover:scale-105 transition-all duration-300">
-                          Create Campaign
-                        </button>
-                      </div>
+                      ) : campaigns.length === 0 ? (
+                        <div className="text-center">
+                          <div className="max-w-md mx-auto space-y-4">
+                            <div className="w-16 h-16 bg-[#F7F5F3] rounded-full flex items-center justify-center mx-auto">
+                              <svg className="w-8 h-8 text-[#37322F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                              </svg>
+                            </div>
+                            <h3 className="text-[#37322F] text-lg font-semibold">No campaigns yet</h3>
+                            <p className="text-[#605A57] text-sm">Create your first campaign to start tracking creator performance and analyzing results.</p>
+                            <Link href="/dashboard/campaigns/new" className="mt-4 px-6 py-2.5 bg-[#37322F] text-white rounded-full text-sm font-medium shadow-[0px_1px_2px_rgba(55,50,47,0.12)] hover:bg-[#2A2520] hover:scale-105 transition-all duration-300 inline-block">
+                              Create Campaign
+                            </Link>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="space-y-4">
+                          {campaigns.map((campaign) => (
+                            <CampaignCard key={campaign.id} campaign={campaign} />
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -307,15 +343,70 @@ function StatCard({ title, value, description, icon }: { title: string; value: s
   )
 }
 
+// Campaign Card Component
+function CampaignCard({ campaign }: { campaign: any }) {
+  const getPlatformIcon = (platform: string) => {
+    const icons: { [key: string]: string } = {
+      tiktok: '📱',
+      instagram: '📸',
+      youtube: '▶️',
+      twitter: '🐦',
+      linkedin: '💼',
+      facebook: '👥',
+    }
+    return icons[platform] || '📱'
+  }
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
+  }
+
+  return (
+    <div className="bg-[#F7F5F3] border border-[#E0DEDB] rounded-[12px] p-6 hover:bg-white hover:shadow-[0px_2px_8px_rgba(55,50,47,0.08)] transition-all duration-300">
+      <div className="flex items-start justify-between mb-4">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#37322F]">
+            <span className="text-lg">{getPlatformIcon(campaign.platform)}</span>
+          </div>
+          <div>
+            <h3 className="text-[#37322F] text-lg font-semibold">{campaign.name}</h3>
+            <p className="text-[#605A57] text-sm capitalize">{campaign.platform}</p>
+          </div>
+        </div>
+        <div className="text-right">
+          <div className="text-[#37322F] text-lg font-semibold">${campaign.estimated_pay}</div>
+          <div className="text-[#605A57] text-xs">per creator</div>
+        </div>
+      </div>
+      
+      <p className="text-[#605A57] text-sm mb-4 line-clamp-2">{campaign.description}</p>
+      
+      <div className="flex items-center justify-between text-xs text-[#605A57]">
+        <div className="flex items-center gap-4">
+          <span>Duration: {campaign.duration_days} days</span>
+          {campaign.view_count_m && (
+            <span>Max views: {campaign.view_count_m.toLocaleString()}</span>
+          )}
+        </div>
+        <span>Created {formatDate(campaign.created_at)}</span>
+      </div>
+    </div>
+  )
+}
+
 // Action Card Component
 function ActionCard({ title, description, icon }: { title: string; description: string; icon: React.ReactNode }) {
   return (
-    <button className="w-full bg-[#F7F5F3] border border-[#E0DEDB] rounded-[12px] p-6 text-left hover:bg-white hover:shadow-[0px_2px_8px_rgba(55,50,47,0.08)] transition-all duration-300 group">
+    <Link href="/dashboard/campaigns/new" className="w-full bg-[#F7F5F3] border border-[#E0DEDB] rounded-[12px] p-6 text-left hover:bg-white hover:shadow-[0px_2px_8px_rgba(55,50,47,0.08)] transition-all duration-300 group block">
       <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#37322F] mb-4 group-hover:scale-110 transition-transform duration-300">
         {icon}
       </div>
       <h3 className="text-[#37322F] text-lg font-semibold mb-2">{title}</h3>
       <p className="text-[#605A57] text-sm">{description}</p>
-    </button>
+    </Link>
   )
 }
